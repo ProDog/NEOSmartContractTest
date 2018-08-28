@@ -1,0 +1,8 @@
+E:\VSProject\NeoContractTest\NeoContracts\bin\Debug\NeoContracts.dll
+E:\VSProject\NeoContractTest\NeoContracts\bin\Debug\NeoContracts.pdb
+E:\VSProject\NeoContractTest\NeoContracts\bin\Debug\Neo.SmartContract.Framework.dll
+E:\VSProject\NeoContractTest\NeoContracts\obj\Debug\NeoContracts.csprojAssemblyReference.cache
+E:\VSProject\NeoContractTest\NeoContracts\obj\Debug\NeoContracts.csproj.CoreCompileInputs.cache
+E:\VSProject\NeoContractTest\NeoContracts\obj\Debug\NeoContracts.csproj.CopyComplete
+E:\VSProject\NeoContractTest\NeoContracts\obj\Debug\NeoContracts.dll
+E:\VSProject\NeoContractTest\NeoContracts\obj\Debug\NeoContracts.pdb

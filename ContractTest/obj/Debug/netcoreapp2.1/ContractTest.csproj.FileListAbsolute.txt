@@ -1,0 +1,11 @@
+E:\VSProject\NeoContractTest\ContractTest\bin\Debug\netcoreapp2.1\ContractTest.deps.json
+E:\VSProject\NeoContractTest\ContractTest\bin\Debug\netcoreapp2.1\ContractTest.runtimeconfig.json
+E:\VSProject\NeoContractTest\ContractTest\bin\Debug\netcoreapp2.1\ContractTest.runtimeconfig.dev.json
+E:\VSProject\NeoContractTest\ContractTest\bin\Debug\netcoreapp2.1\ContractTest.dll
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.csprojAssemblyReference.cache
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.csproj.CoreCompileInputs.cache
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.AssemblyInfoInputs.cache
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.AssemblyInfo.cs
+E:\VSProject\NeoContractTest\ContractTest\bin\Debug\netcoreapp2.1\ContractTest.pdb
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.dll
+E:\VSProject\NeoContractTest\ContractTest\obj\Debug\netcoreapp2.1\ContractTest.pdb

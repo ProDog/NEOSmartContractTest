@@ -5546,11 +5546,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\VSProject\\NEOSmartContractTest\\ContractTest\\ContractTest.csproj",
+      "projectUniqueName": "E:\\NEO_Test\\NEOSmartContractTest\\ContractTest\\ContractTest.csproj",
       "projectName": "ContractTest",
-      "projectPath": "E:\\VSProject\\NEOSmartContractTest\\ContractTest\\ContractTest.csproj",
+      "projectPath": "E:\\NEO_Test\\NEOSmartContractTest\\ContractTest\\ContractTest.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\VSProject\\NEOSmartContractTest\\ContractTest\\obj\\",
+      "outputPath": "E:\\NEO_Test\\NEOSmartContractTest\\ContractTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

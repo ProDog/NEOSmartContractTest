@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoContracts", "NeoContracts\NeoContracts.csproj", "{B17D21CC-3C9F-4DDB-BF2B-065A59427C22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateContracts", "NeoContracts\CreateContracts.csproj", "{B17D21CC-3C9F-4DDB-BF2B-065A59427C22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractTest", "ContractTest\ContractTest.csproj", "{6078F754-7385-4C28-BD5B-57F1E0CD9BD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractTest", "ContractTest\ContractTest.csproj", "{6078F754-7385-4C28-BD5B-57F1E0CD9BD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublishContract", "PublishContract\PublishContract.csproj", "{C110B437-8BED-4C99-BC7D-66B23B3E2046}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6078F754-7385-4C28-BD5B-57F1E0CD9BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6078F754-7385-4C28-BD5B-57F1E0CD9BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6078F754-7385-4C28-BD5B-57F1E0CD9BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C110B437-8BED-4C99-BC7D-66B23B3E2046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C110B437-8BED-4C99-BC7D-66B23B3E2046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C110B437-8BED-4C99-BC7D-66B23B3E2046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C110B437-8BED-4C99-BC7D-66B23B3E2046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

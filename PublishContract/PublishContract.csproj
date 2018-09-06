@@ -6,15 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Neo" Version="2.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="thinSDK">
       <HintPath>..\..\..\NEL\neo-thinsdk-cs\thinSDK\bin\Debug\netcoreapp2.0\thinSDK.dll</HintPath>
     </Reference>
     <Reference Include="thinSDK_neo">
-      <HintPath>..\..\..\NEL\neo-thinsdk-cs\thinSDK_neo\bin\Debug\netcoreapp2.0\thinSDK_neo.dll</HintPath>
+      <HintPath>..\..\neo-thinsdk-cs\thinSDK_neo\bin\Debug\netcoreapp2.0\thinSDK_neo.dll</HintPath>
     </Reference>
   </ItemGroup>
 

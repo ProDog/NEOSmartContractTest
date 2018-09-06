@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v2.1": {
       "ContractTest/1.0.0": {
         "dependencies": {
-          "Neo": "2.8.0"
+          "Neo": "2.8.0",
+          "thinSDK": "1.0.0.0",
+          "thinSDK_neo": "1.0.0.0"
         },
         "runtime": {
           "ContractTest.dll": {}
@@ -1076,6 +1078,30 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "thinSDK/1.0.0.0": {
+        "runtime": {
+          "thinSDK.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "thinSDK_neo/1.0.0.0": {
+        "runtime": {
+          "thinSDK_neo.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "llvm/1.0.0.0": {
+        "runtime": {
+          "llvm.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1798,6 +1824,21 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "thinSDK/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "thinSDK_neo/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "llvm/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

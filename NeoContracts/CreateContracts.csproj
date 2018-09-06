@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Contract1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TokenContract.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

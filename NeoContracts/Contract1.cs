@@ -3,7 +3,7 @@ using Neo.SmartContract.Framework.Services.Neo;
 using System;
 using System.Numerics;
 
-namespace NeoContracts
+namespace CreateContracts
 {
     public class Contract1 : SmartContract
     {

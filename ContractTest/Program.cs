@@ -12,6 +12,9 @@ namespace ContractTest
         {
             Console.WriteLine("wif:");
             Test_Deploy();
+           
+            GetBalanceOf();
+
             Console.ReadKey();
         }
 
@@ -72,6 +75,37 @@ namespace ContractTest
             var url = Helper.MakeRpcUrlPost(api, "sendrawtransaction", out postdata, new MyJson.JsonNode_ValueString(strtrandata));
             var result = Helper.HttpPost(url, postdata);
             return result;
+        }
+
+        /// <summary>
+        /// 调用合约中的balanceOf方法、
+        /// </summary>
+        /// <param name="address"></param>
+        private static void GetBalanceOf()
+        {
+            var wif = Console.ReadLine();
+            var prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
+            var pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
+            var address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
+            var scriptHash = ThinNeo.Helper.GetPublicKeyHashFromAddress(address);
+
+            byte[] data = null;
+            using (ScriptBuilder sb = new ScriptBuilder())
+            {
+                MyJson.JsonNode_Array array = new MyJson.JsonNode_Array();
+                array.AddArrayValue("(addr)" + address);
+                sb.EmitParamJson(array);
+                sb.EmitPushString("balanceOf");
+                sb.EmitAppCall(new Hash160("0xa0b53d2efa8b1c4a62fcc1fcb54b7641510810c7"));//合约脚本hash
+                data = sb.ToArray();
+            }
+
+            string script = ThinNeo.Helper.Bytes2HexString(data);
+            byte[] postdata;
+            var url = Helper.MakeRpcUrlPost("https://api.nel.group/api/testnet", "invokescript", out postdata,
+                new MyJson.JsonNode_ValueString(script));
+            var result = Helper.HttpPost(url, postdata);
+            Console.WriteLine(result);
         }
     }
 }

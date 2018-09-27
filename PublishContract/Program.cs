@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using ThinNeo;
@@ -29,19 +30,19 @@ namespace PublishContract
             Dictionary<string, List<Utxo>> dir = GetBalanceByAddress(api, address);
 
             //从文件中读取合约脚本
-            byte[] script = System.IO.File.ReadAllBytes("dapp_nnc4.0.avm"); //这里填你的合约所在地址
+            byte[] script = System.IO.File.ReadAllBytes("BCTContract.avm"); //这里填你的合约所在地址
             Console.WriteLine("合约脚本:" + ThinNeo.Helper.Bytes2HexString(script));
             Console.WriteLine("合约脚本hash：" + ThinNeo.Helper.Bytes2HexString(ThinNeo.Helper.GetScriptHashFromScript(script).data.ToArray().Reverse().ToArray()));
             byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //这里填合约入参  例：0610代表（string，[]）
             byte[] return_type = ThinNeo.Helper.HexString2Bytes("05");  //这里填合约的出参
             int need_storage = 1;
-            int need_nep4 = 2;
+            int need_nep4 = 0;
             int need_canCharge = 4;
-            string name = "XC";
+            string name = "BCT";
             string version = "1.0";
-            string auther = "Zhang";
+            string auther = "ZoroChain";
             string email = "0";
-            string description = "0";
+            string description = "blacat token";
             using (ThinNeo.ScriptBuilder sb = new ThinNeo.ScriptBuilder())
             {
                 var ss = need_storage;

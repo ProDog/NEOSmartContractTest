@@ -14,13 +14,118 @@ namespace ContractTest
         {
             Console.WriteLine("wif:");
             //Test_DeployBCT();
+            //Test_DeployBCP();
             //GetBalanceOf();
 
-            TransferBCT();
+            //TransferBCT();
+            //TransferBCP();
+
+            //NeoBankDeposit();
+            //NeoBankBalanceOf();
+            //NeoBankSetCanBack();
+            NeoGetMoneyBack();
 
             Console.ReadKey();
         }
-       
+
+        private static void NeoGetMoneyBack()
+        {
+            var wif = Console.ReadLine();
+            var prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
+            var pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
+            var address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
+            var scriptHash = ThinNeo.Helper.GetPublicKeyHashFromAddress(address);
+
+            byte[] script;
+            using (var sb = new ThinNeo.ScriptBuilder())
+            {
+                var array = new MyJson.JsonNode_Array();
+                array.AddArrayValue("(addr)" + "AWN6jngST5ytpNnY1dhBQG7QHd7V8SqSCp");
+                array.AddArrayValue("(int)" + "6666" + "88386666");
+                sb.EmitParamJson(array);//参数倒序入
+                sb.EmitPushString("getmoneyback");//参数倒序入
+                sb.EmitAppCall(new Hash160("78f0ffad20d31ee1dd9d77d598d42bad4f639695"));//nep5脚本
+                script = sb.ToArray();
+                Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
+            }
+            var result = SendTransaction(prikey, script);
+        }
+
+        private static void NeoBankSetCanBack()
+        {
+            var wif = Console.ReadLine();
+            var prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
+            var pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
+            var address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
+            var scriptHash = ThinNeo.Helper.GetPublicKeyHashFromAddress(address);
+
+            byte[] script;
+            using (var sb = new ThinNeo.ScriptBuilder())
+            {
+                var array = new MyJson.JsonNode_Array();
+                array.AddArrayValue("(addr)" + "AWN6jngST5ytpNnY1dhBQG7QHd7V8SqSCp");
+                array.AddArrayValue("(int)" + "20000" + "88380000");
+                sb.EmitParamJson(array);//参数倒序入
+                sb.EmitPushString("setcanback");//参数倒序入
+                sb.EmitAppCall(new Hash160("78f0ffad20d31ee1dd9d77d598d42bad4f639695"));//nep5脚本
+                script = sb.ToArray();
+                Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
+            }
+            var result = SendTransaction(prikey, script);
+        }
+
+        private static void NeoBankBalanceOf()
+        {
+            var wif = Console.ReadLine();
+            var prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
+            var pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
+            var address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
+            var scriptHash = ThinNeo.Helper.GetPublicKeyHashFromAddress(address);
+
+            byte[] data = null;
+            using (ScriptBuilder sb = new ScriptBuilder())
+            {
+                MyJson.JsonNode_Array array = new MyJson.JsonNode_Array();
+                array.AddArrayValue("(addr)" + "AWN6jngST5ytpNnY1dhBQG7QHd7V8SqSCp");
+                sb.EmitParamJson(array);
+                sb.EmitPushString("balanceOf");
+                sb.EmitAppCall(new Hash160("78f0ffad20d31ee1dd9d77d598d42bad4f639695"));//合约脚本hash
+                data = sb.ToArray();
+            }
+
+            string script = ThinNeo.Helper.Bytes2HexString(data);
+            byte[] postdata;
+            var url = Helper.MakeRpcUrlPost("https://api.nel.group/api/testnet", "invokescript", out postdata, new MyJson.JsonNode_ValueString(script));
+            var result = Helper.HttpPost(url, postdata);
+            var aa = MyJson.Parse(result).AsDict();
+            byte[] balance = ThinNeo.Helper.HexString2Bytes(aa["result"].AsList()[0].AsDict()["stack"].AsList()[0].AsDict()["value"].ToString());
+            var ba = new BigInteger(balance);
+            Console.WriteLine(result);
+            Console.WriteLine(ba);
+        }
+
+        private static void NeoBankDeposit()
+        {
+            var wif = Console.ReadLine();
+            var prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
+            var pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
+            var address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
+            var scriptHash = ThinNeo.Helper.GetPublicKeyHashFromAddress(address);
+
+            byte[] script;
+            using (var sb = new ThinNeo.ScriptBuilder())
+            {
+                var array = new MyJson.JsonNode_Array();
+                array.AddArrayValue("(hex256)" + "0x1be4560ef5de19529a2cea12238bf8334cc40d0083871dd16d23ca55cf532cf2");
+                sb.EmitParamJson(array);//参数倒序入
+                sb.EmitPushString("deposit");//参数倒序入
+                sb.EmitAppCall(new Hash160("78f0ffad20d31ee1dd9d77d598d42bad4f639695"));//nep5脚本
+                script = sb.ToArray();
+                Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
+            }
+            var result = SendTransaction(prikey, script);
+        }
+
         private static void TransferBCT()
         {
             var wif = Console.ReadLine();
@@ -37,7 +142,7 @@ namespace ContractTest
                 var array = new MyJson.JsonNode_Array();
                 array.AddArrayValue("(addr)" + address);//from
                 array.AddArrayValue("(addr)" + targetAddress);//to
-                array.AddArrayValue("(int)" + "8800" + "85848838");//value
+                array.AddArrayValue("(int)" + "800" + "8538");//value
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("transfer");//参数倒序入
                 sb.EmitAppCall(new Hash160("40a80749ef62da6fc3d74dbf6fc7745148922372"));
@@ -46,7 +151,7 @@ namespace ContractTest
 
             //获取自己的utxo
             Dictionary<string, List<Utxo>> dir = Helper.GetBalanceByAddress(api, address);
-            Transaction tran = Helper.makeTran(dir[id_GAS], address, new ThinNeo.Hash256(id_GAS), 0);
+            Transaction tran = Helper.makeTran(dir[id_GAS], null, new ThinNeo.Hash256(id_GAS), 1);
             tran.type = ThinNeo.TransactionType.InvocationTransaction;
             //tran.version = 0;
             //tran.attributes = new ThinNeo.Attribute[0];
@@ -72,6 +177,7 @@ namespace ContractTest
 
         private static void TransferBCP()
         {
+            Console.WriteLine("wif:");
             var wif = Console.ReadLine();
             Console.WriteLine("targetAddress:");
             var targetAddress = Console.ReadLine();
@@ -86,7 +192,7 @@ namespace ContractTest
                 var array = new MyJson.JsonNode_Array();
                 array.AddArrayValue("(addr)" + address);//from
                 array.AddArrayValue("(addr)" + targetAddress);//to
-                array.AddArrayValue("(int)" + "500" + "85848838");//value
+                array.AddArrayValue("(int)" + "5500" + "85848838");//value
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("transfer");//参数倒序入
                 sb.EmitAppCall(new Hash160("04e31cee0443bb916534dad2adf508458920e66d"));
@@ -131,10 +237,10 @@ namespace ContractTest
             using (var sb = new ThinNeo.ScriptBuilder())
             {
                 var array = new MyJson.JsonNode_Array();
-                array.AddArrayValue("(int)1");
+                array.AddArrayValue("(addr)" + "AUBwRzvY6uoSZRF2WQxNEDea3H5vFWBf3K");
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("deploy");//参数倒序入
-                sb.EmitAppCall(new Hash160("04e31cee0443bb916534dad2adf508458920e66d"));//nep5脚本
+                sb.EmitAppCall(new Hash160("6e416e46a8652eb746e4703a2df9c36981dbf91a"));//nep5脚本
                 script = sb.ToArray();
                 Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
             }
@@ -157,7 +263,7 @@ namespace ContractTest
                 array.AddArrayValue("(int)1");
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("deploy");//参数倒序入
-                sb.EmitAppCall(new Hash160("40a80749ef62da6fc3d74dbf6fc7745148922372"));//nep5脚本
+                sb.EmitAppCall(new Hash160("04e31cee0443bb916534dad2adf508458920e66d"));//nep5脚本
                 script = sb.ToArray();
                 Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
             }

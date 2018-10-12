@@ -16,6 +16,7 @@ namespace PublishContract
             var wif = Console.ReadLine();
             //var aa=Encoding.Default.GetBytes("AbN2K2trYzgx8WMg2H7U7JHH6RQVzz2fnx");
             PubScDemo(wif);
+            Console.ReadKey();
         }
 
 
@@ -30,7 +31,7 @@ namespace PublishContract
             Dictionary<string, List<Utxo>> dir = GetBalanceByAddress(api, address);
 
             //从文件中读取合约脚本
-            byte[] script = System.IO.File.ReadAllBytes("BCTContract.avm"); //这里填你的合约所在地址
+            byte[] script = System.IO.File.ReadAllBytes("NeoBankContract.avm"); //这里填你的合约所在地址
             Console.WriteLine("合约脚本:" + ThinNeo.Helper.Bytes2HexString(script));
             Console.WriteLine("合约脚本hash：" + ThinNeo.Helper.Bytes2HexString(ThinNeo.Helper.GetScriptHashFromScript(script).data.ToArray().Reverse().ToArray()));
             byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //这里填合约入参  例：0610代表（string，[]）
@@ -38,11 +39,11 @@ namespace PublishContract
             int need_storage = 1;
             int need_nep4 = 0;
             int need_canCharge = 4;
-            string name = "BCT";
+            string name = "Neo Bank";
             string version = "1.0";
             string auther = "ZoroChain";
             string email = "0";
-            string description = "blacat token";
+            string description = "Neo Bcp Bank";
             using (ThinNeo.ScriptBuilder sb = new ThinNeo.ScriptBuilder())
             {
                 var ss = need_storage;

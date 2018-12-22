@@ -32,7 +32,7 @@ namespace PubContract
             byte[] script = System.IO.File.ReadAllBytes("TestCoin.avm"); //这里填你的合约所在地址
             Console.WriteLine("合约脚本hash：" + ThinNeo.Helper_NEO.CalcHash160(script)); //合约 hash，也就是 assetId
 
-            byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //合约入参类型  例：0610代表（string，[]）
+            byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //合约入参类型  例：0610代表（string，[]）参考：http://docs.neo.org/zh-cn/sc/Parameter.html
             byte[] return_type = ThinNeo.Helper.HexString2Bytes("05");  //合约返回值类型 05 代表 ByteArray
             int need_storage = 1; //是否需要使用存储 0false 1true
             int need_nep4 = 0; //是否需要动态调用 0false 2true

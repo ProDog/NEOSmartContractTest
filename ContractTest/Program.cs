@@ -15,12 +15,12 @@ namespace ContractTest
         {
             //Console.WriteLine("wif:");
             //est_DeployBCT();
-            //Test_DeployBCP();
+            Test_DeployBCP();
             //Test_DeployBCPWithoutUtxo();
             //TransferBCWithoutUtxo();
-            GetBalanceOf();
+            //GetBalanceOf();
             
-            //TransferBCT();
+//TransferBCT();
             //TransferBCP();
 
             //NeoBankDeposit();
@@ -145,10 +145,10 @@ namespace ContractTest
                 var array = new MyJson.JsonNode_Array();
                 array.AddArrayValue("(addr)" + address);//from
                 array.AddArrayValue("(addr)" + targetAddress);//to
-                array.AddArrayValue("(int)" + "800" + "8538");//value
+                array.AddArrayValue("(int)" + "100" + "0000");//value
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("transfer");//参数倒序入
-                sb.EmitAppCall(new Hash160("025761aea3bb99baaec1a6a53744992c8e6b0681"));
+                sb.EmitAppCall(new Hash160("40a80749ef62da6fc3d74dbf6fc7745148922372"));
                 script = sb.ToArray();
             }
 
@@ -264,10 +264,10 @@ namespace ContractTest
             using (var sb = new ThinNeo.ScriptBuilder())
             {
                 var array = new MyJson.JsonNode_Array();
-                array.AddArrayValue("(addr)" + "AGNrEJ7iamdmiXHMf28xtifVBiKcjjrHpS");
+                array.AddArrayValue("(int)" + "1");
                 sb.EmitParamJson(array);//参数倒序入
                 sb.EmitPushString("deploy");//参数倒序入
-                sb.EmitAppCall(new Hash160("93ae7faf78f67c9753e768a3c6ffcfd974ea1c6f"));//nep5脚本
+                sb.EmitAppCall(new Hash160("691b53ecbf33d8119a395b6e94259d2bf32cab3d"));//nep5脚本
                 script = sb.ToArray();
                 Console.WriteLine(ThinNeo.Helper.Bytes2HexString(script));
             }
@@ -396,8 +396,7 @@ namespace ContractTest
         /// <param name="address"></param>
         private static void GetBalanceOf()
         {
-            decimal dd = (decimal)1100000 * (decimal)60000.0000000;
-           byte[] data = null;
+            byte[] data = null;
             using (ScriptBuilder sb = new ScriptBuilder())
             {
                 MyJson.JsonNode_Array array = new MyJson.JsonNode_Array();

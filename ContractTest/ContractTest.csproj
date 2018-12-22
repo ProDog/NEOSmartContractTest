@@ -11,9 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Neo.SmartContract.Framework">
-      <HintPath>..\..\..\Zoro\Contract\NeoBankContract\Neo.SmartContract.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="thinSDK">
       <HintPath>..\..\..\NEL\neo-thinsdk-cs\thinSDK\bin\Debug\netcoreapp2.0\thinSDK.dll</HintPath>
     </Reference>
